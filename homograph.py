@@ -56,17 +56,3 @@ def homographs(domain, homograph=''):
       yield from homographs(domain[1:], homograph + glyph)
 
   yield from homographs(domain[1:], homograph + domain[0])
-
-# TODO
-def check_domain_availability(url):
-  # TODO: Too slow, find a faster way
-  return whois.query(url) is None
-
-# TODO
-def available_domains(urls):
-  for url in urls:
-    try:
-      if check_domain_availability(url):
-        yield url
-    except whois.exceptions.UnknownTld:
-      pass

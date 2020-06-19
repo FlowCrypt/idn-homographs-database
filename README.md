@@ -39,14 +39,3 @@ In addition to detecting homographs, the library can also be used offensively, t
 'à.h.с'
 ```
 
-Finally, we can look at generated homographs and select only those that are currently available for purchase:
-
-```python
->>> homograph_generator = homograph.homographs('flowcrypt')
->>> for i in homograph_generator:
-...     if homograph.check_domain_availability(i + '.com'):
-...         print(i + '.com')
-...         break
-... 
-𖼷ḹ𑣎ผoŗẙꝧť.com
-```
