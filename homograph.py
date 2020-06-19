@@ -15,9 +15,10 @@ def homoglyphic(letter1, letter2):
 
   return letter2 in [entry['char'] for entry in hgdb[letter1]['similar_char']]
 
-# Checks whether two strings are visually equivalent
-# 
 def homographic(domain1, domain2):
+  """
+    Determine whether two domains are homographic (visually equivalent or nearly so)
+  """
   domain1 = domain1.lower()
   domain2 = domain2.lower()
 
