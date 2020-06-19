@@ -1,5 +1,6 @@
 import json
 import string
+import whois
 
 # The simchar data from ShamFinder could be structured
 # waaay more efficiently & less redundantly
@@ -25,10 +26,10 @@ def homographic(domain1, domain2):
     return False
 
   for letter1, letter2 in zip(domain1, domain2):
-
+    
     if not homoglyphic(letter1, letter2):
       return False
-
+      
   return True
 
 # Get all homoglyphs of a character
