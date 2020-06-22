@@ -1,20 +1,20 @@
 import json
 import string
+import pathlib
 
-# The simchar data from ShamFinder could be structured
-# waaay more efficiently & less redundantly
-hgdb_file = open('homographs.json')
+libdir = pathlib.Path(__file__).parent.absolute()
+hgdb_file = open(str(libdir) + '/homographs.json')
 hgdb = json.load(hgdb_file)
 hgdb_file.close
 
 # Checks whether two individual characters are equivalent
-def homoglyphic(letter1, letter2):
+def is_homoglyph(letter1, letter2):
   if letter1 == letter2:
     return True
 
   return letter2 in [entry['char'] for entry in hgdb[letter1]['similar_char']]
 
-def homographic(domain1, domain2):
+def is_homograph(domain1, domain2):
   """
     Determine whether two domains are homographic (visually equivalent or nearly so)
   """
@@ -26,7 +26,7 @@ def homographic(domain1, domain2):
 
   for letter1, letter2 in zip(domain1, domain2):
 
-    if not homoglyphic(letter1, letter2):
+    if not is_homoglyph(letter1, letter2):
       return False
 
   return True
