@@ -4,7 +4,6 @@ import pathlib
 
 libdir = pathlib.Path(__file__).parent.absolute()
 hgdb_file = open(str(libdir) + '/homographs.json')
-hgdb_file = open('homographs.json')
 hgdb = json.load(hgdb_file)
 hgdb_file.close
 
