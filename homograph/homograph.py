@@ -8,13 +8,13 @@ hgdb = json.load(hgdb_file)
 hgdb_file.close
 
 # Checks whether two individual characters are equivalent
-def is_homoglyph(letter1, letter2):
+def is_char_homoglyphic(letter1, letter2):
   if letter1 == letter2:
     return True
 
   return letter2 in [entry['char'] for entry in hgdb[letter1]['similar_char']]
 
-def is_homograph(domain1, domain2):
+def looks_similar(domain1, domain2):
   """
     Determine whether two domains are homographic (visually equivalent or nearly so)
   """
@@ -26,13 +26,13 @@ def is_homograph(domain1, domain2):
 
   for letter1, letter2 in zip(domain1, domain2):
 
-    if not is_homoglyph(letter1, letter2):
+    if not is_char_homoglyphic(letter1, letter2):
       return False
 
   return True
 
 # Get all homoglyphs of a character
-def homoglyphs(glyph):
+def generate_similar_chars(glyph):
   if glyph not in hgdb:
     return ''
 
@@ -43,7 +43,7 @@ def homoglyphs(glyph):
 # for recursive calls, a sufficiently long domain
 # will cause throw an exception.
 # TODO: replace with iterative equivalent.
-def homographs(domain, homograph=''):
+def generate_similar_strings(domain, homograph=''):
   if len(domain) > 253:
     raise NameError('Domain name cannot exceed 253 characters')
 
@@ -51,7 +51,7 @@ def homographs(domain, homograph=''):
     yield homograph
     return
 
-  for glyph in homoglyphs(domain[0]):
-      yield from homographs(domain[1:], homograph + glyph)
+  for glyph in generate_similar_chars(domain[0]):
+      yield from generate_similar_strings(domain[1:], homograph + glyph)
 
-  yield from homographs(domain[1:], homograph + domain[0])
+  yield from generate_similar_strings(domain[1:], homograph + domain[0])

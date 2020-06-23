@@ -1,4 +1,3 @@
-from homograph.homograph import is_homoglyph
-from homograph.homograph import is_homograph
-from homograph.homograph import homoglyphs
-from homograph.homograph import homographs
+from homograph.homograph import looks_similar
+from homograph.homograph import generate_similar_chars
+from homograph.homograph import generate_similar_strings
