@@ -16,21 +16,21 @@ With that done, we can try to detect a homograph. Let's replace the lowercase L 
 
 ```python3
 >>> import homograph
->>> homograph.homographic('flowcrypt.com', 'f1owcrypt.com')
+>>> homograph.looks_similar('flowcrypt.com', 'f1owcrypt.com')
 True
 ```
 
 Voila! Now let's see how the library reacts to a non-homograph:
 
 ```python3
->>> homograph.homographic('flowcrylt.com', 'flowcrypt.com')
+>>> homograph.looks_similar('flowcrylt.com', 'flowcrypt.com')
 False
 ```
 
 In addition to detecting homographs, the library can also be used offensively, to generate them:
 
 ```python3
->>> homograph_generator = homograph.homographs('a.b.c')
+>>> homograph_generator = homograph.generate_similar_strings('a.b.c')
 >>> next(homograph_generator)
 'à.h.o'
 >>> next(homograph_generator)
