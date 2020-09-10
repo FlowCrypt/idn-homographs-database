@@ -3,7 +3,7 @@ import string
 import pathlib
 
 libdir = pathlib.Path(__file__).parent.absolute()
-hgdb_file = open(str(libdir) + '/homographs.json')
+hgdb_file = open(str(libdir) + '/homographs.json', encoding='utf-8')
 hgdb = json.load(hgdb_file)
 hgdb_file.close
 
