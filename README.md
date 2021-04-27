@@ -9,7 +9,6 @@ First, download the code and install dependencies:
 ```shell
 git clone https://github.com/FlowCrypt/idn-homographs-database.git
 cd idn-homographs-database
-pip install -r requirements.txt
 ```
 
 With that done, we can try to detect a homograph. Let's replace the lowercase L in flowcrypt.com with the number one:
