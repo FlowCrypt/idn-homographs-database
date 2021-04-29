@@ -4,7 +4,9 @@ This is a library for detecting and generating [IDN Homographs](https://en.wikip
 
 ## Install & Use
 
-First, download the code and install dependencies:
+This code is available as a package on PyPI and can be installed via pip via `pip install homograph`.
+
+Otherwise, you can acquire the library by cloning this repository:
 
 ```shell
 git clone https://github.com/FlowCrypt/idn-homographs-database.git
